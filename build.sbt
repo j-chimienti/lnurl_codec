@@ -1,5 +1,5 @@
 enablePlugins(ScalaJSPlugin)
-
+// https://getbootstrap.com/docs/3.4/getting-started/
 name := "Scala.js Tutorial"
 scalaVersion := "2.13.5"
 
@@ -20,3 +20,5 @@ testFrameworks += new TestFramework("utest.runner.Framework")
 
 // Full Optimization
 // fullLinkJS
+
+// ~fastLinkJS
