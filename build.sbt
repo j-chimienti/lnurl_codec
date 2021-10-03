@@ -1,6 +1,5 @@
 enablePlugins(ScalaJSPlugin)
-// https://getbootstrap.com/docs/3.4/getting-started/
-name := "Scala.js Tutorial"
+name := "LNURL Codec"
 scalaVersion := "2.13.5"
 
 libraryDependencies += "com.lihaoyi" %%% "scalatags" % "0.9.4"

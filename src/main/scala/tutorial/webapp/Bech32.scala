@@ -51,7 +51,7 @@ case object Bech32 {
 
   final def decode(bech32: String): Try[(String, Seq[Int5])] = Try{
     val l = bech32.length
-    require(l >= 8 && l <= 90, s"Invalid Bech32: $bech32 (length $l). Valid length range: 8-90 characters.")
+//    require(l >= 8 && l <= 90, s"Invalid Bech32: $bech32 (length $l). Valid length range: 8-90 characters.")
     require(bech32.forall(c => c.isLower || c.isDigit ) || bech32.forall(c => c.isUpper || c.isDigit), s"Invalid Bech32: $bech32. Mixed case.")
     val sepPosition = bech32.lastIndexOf(SEP)
     require(sepPosition != -1, s"Invalid Bech32: $bech32. Missing separator $SEP.")
