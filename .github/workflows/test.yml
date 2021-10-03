@@ -1,16 +1,13 @@
 name: Scala CI
 
 on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+  - push
+  - pull_request
 
 jobs:
   build:
 
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
       # todo: java 11...
@@ -31,6 +28,7 @@ jobs:
       #          key: ${{ runner.os }}-sbt-cache-v2-${{ hashFiles('**/*.sbt') }}-${{ hashFiles('project/build.properties') }}
       - name: build
         run: sbt fullLinkJS
+    # Error: Cannot find module 'jsdom'
       - name: test
         run: sbt test
 
