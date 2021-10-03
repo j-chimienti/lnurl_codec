@@ -16,17 +16,17 @@ object LightningURLApp {
 
   def setupUI(): Unit = {
     val title = h1("LNURL Codec")
-    val reasonInput = textarea(*.id := "reasonInput", *.rows:="5", *.cls:="form-control", *.placeholder:="LNURL *").render
-    val decoded = textarea(*.id := "decoded", *.rows:="5", *.cls:="form-control", *.readonly).render
-    def decodeInput() = {
-      val v = reasonInput.render.value
+    val decodeInput = textarea(*.id := "decodeInput", *.rows:="5", *.cls:="form-control", *.placeholder:="LNURL *").render
+    val decodedOutput = textarea(*.id := "decodedOutput", *.rows:="5", *.cls:="form-control", *.readonly).render
+    def decode() = {
+      val v = decodeInput.render.value
       println(s"decode ${v}")
       val trimmed = v.replace("lightning:", "").trim
       val r = LightningUrl.decode(trimmed)
-      decoded.render.textContent = r
+      decodedOutput.render.textContent = r
     }
-    val decodeBtn = button(*.cls:="btn btn-primary", *.onclick:= {
-      () => decodeInput()
+    val decodeBtn = button(*.cls:="btn btn-primary", *.id:="decodeBtn", *.onclick:= {
+      () => decode()
     })("decode")
 
     val encodeInput = textarea(*.id := "encodeInput", *.rows:="5", *.cls:="form-control", *.placeholder:="string to encode").render
@@ -37,7 +37,7 @@ object LightningURLApp {
       encodedOutput.render.textContent = d
     }
 
-    val encodeBtn = button(*.cls:="btn btn-primary", *.onclick:= {
+    val encodeBtn = button(*.cls:="btn btn-primary", *.id:="encodeBtn", *.onclick:= {
       () => encode
     })("encode")
 
@@ -46,8 +46,8 @@ object LightningURLApp {
       div(*.cls:="container text-center")(
         title,
       div(*.cls:= "row d-flex justfiy-content-center")(
-        div(*.cls:="col-md-6")(reasonInput),
-        div(*.cls:="col-md-6")(decoded)
+        div(*.cls:="col-md-6")(decodeInput),
+        div(*.cls:="col-md-6")(decodedOutput)
 
       ),
         div(*.cls:="row my-4")(
