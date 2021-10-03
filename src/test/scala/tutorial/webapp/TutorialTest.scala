@@ -11,7 +11,7 @@ import org.scalajs.dom.ext._
 object TutorialTest extends TestSuite {
 
   // Initialize App
-  TutorialApp.setupUI()
+  LightningURLApp.setupUI()
 
   def tests = Tests {
     test("HelloWorld") {

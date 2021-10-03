@@ -34,8 +34,6 @@ object LightningUrl {
     Bech32.decode(url) match {
       case Failure(exception) => exception.getMessage
       case Success(value) =>
-        println(value._1)
-        println(value._2)
         new String(five2eight(value._2.toArray))
     }
   }
