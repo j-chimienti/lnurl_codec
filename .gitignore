@@ -1,7 +1,0 @@
-# sbt target folders
-target/
-
-# eclipse project files
-/.settings
-/.classpath
-/.project
