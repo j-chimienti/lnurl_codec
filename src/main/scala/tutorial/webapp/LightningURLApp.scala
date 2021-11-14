@@ -2,6 +2,7 @@ package tutorial.webapp
 
 import org.scalajs.dom
 import org.scalajs.dom.document
+import org.scalajs.dom.html.TextArea
 import scalatags.JsDom.short._
 
 
@@ -29,16 +30,27 @@ object LightningURLApp {
       () => decodeInput()
     })("decode")
 
-    val encodeInput = textarea(*.id := "encodeInput", *.rows:="5", *.cls:="form-control", *.placeholder:="string to encode").render
-    val encodedOutput = textarea(*.id := "encodedOutput", *.rows:="5", *.cls:="form-control", *.placeholder:="encoded", *.readonly).render
-    def encode = {
-      val v = encodeInput.render.value
+    def encode(v: String, out: TextArea) = {
       val d = LightningUrl(v).url
-      encodedOutput.render.textContent = d
+      out.render.textContent = d
     }
+    val encodedOutput = textarea(*.id := "encodedOutput", *.rows:="5", *.cls:="form-control", *.placeholder:="encoded", *.readonly).render
+    val encodeInput = textarea(
+      *.id := "encodeInput", *.rows:="5",
+      *.cls:="form-control",
+      *.placeholder:="string to encode",
+//      *.oninput:= {
+//        (e: String) => {
+//          println("changed")
+//          encode(e, encodedOutput)
+//        }
+//      }
+    ).render
+
+
 
     val encodeBtn = button(*.cls:="btn btn-primary", *.onclick:= {
-      () => encode
+      () => encode(encodeInput.value, encodedOutput)
     })("encode")
 
 
