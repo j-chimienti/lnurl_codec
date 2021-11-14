@@ -6,6 +6,9 @@ jobs:
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v2.3.1
+      - name: Install rsync 📚
+        run: |
+          apt-get update && apt-get install -y rsync
       - name: install jsdom
         run: npm i jsdom
       - name: Test
