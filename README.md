@@ -2,7 +2,7 @@
 
 decode & encode lnurls
 
-[![Scala CI](https://github.com/j-chimienti/lnurl_codec/actions/workflows/test.yml/badge.svg)](https://github.com/j-chimienti/lnurl_codec/actions/workflows/test.yml)
+[![Build and Deploy](https://github.com/j-chimienti/lnurl_codec/actions/workflows/deploy.yml/badge.svg)](https://github.com/j-chimienti/lnurl_codec/actions/workflows/deploy.yml)
 
 live: https://j-chimienti.github.io/lnurl_codec/
 

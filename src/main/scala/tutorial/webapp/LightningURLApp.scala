@@ -5,6 +5,8 @@ import org.scalajs.dom.document
 import org.scalajs.dom.html.TextArea
 import scalatags.JsDom.short._
 
+import scala.util.{Failure, Success}
+
 
 object LightningURLApp {
   def main(args: Array[String]): Unit = {
@@ -24,7 +26,10 @@ object LightningURLApp {
       println(s"decode ${v}")
       val trimmed = v.replace("lightning:", "").trim
       val r = LightningUrl.decode(trimmed)
-      decoded.render.textContent = r
+      decoded.render.textContent = r match {
+        case Failure(exception) => s"Error: " + exception.getMessage
+        case Success(value) =>value
+      }
     }
     val decodeBtn = button(*.cls:="btn btn-primary", *.onclick:= {
       () => decodeInput()

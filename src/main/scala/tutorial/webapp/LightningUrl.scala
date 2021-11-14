@@ -1,7 +1,7 @@
 package tutorial.webapp
 
 
-import scala.util.{Failure, Success, Try}
+import scala.util.Try
 
 case class LightningUrl(url: String) {
   // validate
@@ -12,16 +12,13 @@ case class LightningUrl(url: String) {
 
 }
 object LightningUrl {
-  def decode(l: LightningUrl): String = decode(l.url)
-  def decode(url: String): String = {
-    Bech32.decode(url) match {
-      case Failure(exception) => exception.getMessage
-      case Success(value) =>
-        new String(Bech32.from5Bit(value._2).toArray)
-    }
-  }
-
   val hrp = "lnurl"
+  def decode(l: LightningUrl): Try[String] = decode(l.url)
+  def decode(url: String): Try[String] =
+    Bech32.decode(url) map { value =>
+      new String(Bech32.from5Bit(value._2).toArray)
+    }
+
   def apply(uri: String): LightningUrl = {
     val e = Bech32.encode(hrp, Bech32.to5Bit(uri.getBytes()))
     new LightningUrl(e.get)
