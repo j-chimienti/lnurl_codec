@@ -6,18 +6,16 @@ jobs:
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v2.3.1
-      - name: Install rsync 📚
-        run: |
-          apt-get update && apt-get install -y rsync
       - name: install jsdom
         run: npm i jsdom
       - name: Test
         run: sbt test
       - name: Build 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
         run: |
+          mkdir docs
           sbt fullLinkJS
-          cp -R ./target/scala-2.13/lnurl-codec-opt/main.js ./docs
-          cp index.html ./docs
+          cp -R ./target/scala-2.13/lnurl-codec-opt/main.js ./docs/main.js
+          cp index.html ./docs/index.html
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.5
