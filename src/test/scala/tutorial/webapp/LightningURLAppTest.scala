@@ -8,14 +8,18 @@ import org.scalajs.dom
 import org.scalajs.dom.document
 import org.scalajs.dom.ext._
 
-object TutorialTest extends TestSuite {
+object LightningURLAppTest extends TestSuite {
 
   // Initialize App
   LightningURLApp.setupUI()
 
   def tests = Tests {
-    test("HelloWorld") {
+    test("header") {
       assert(document.querySelectorAll("h1").count(_.textContent == "LNURL Codec") == 1)
+    }
+
+    test("decode") {
+
     }
 
 //    test("ButtonClick") {
