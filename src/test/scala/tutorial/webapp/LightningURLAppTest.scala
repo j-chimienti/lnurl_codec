@@ -20,6 +20,11 @@ object LightningURLAppTest extends TestSuite {
 
     test("decode") {
 
+      val (url, decodedUrl) = TestVectors.LNUrls.bitrefillUrl
+      document.querySelector("#reasonInput").textContent = url
+      document.querySelector("#decodeBtn").asInstanceOf[dom.html.Button].click()
+      val decoded = document.querySelector("#decoded")
+      assert(decoded.textContent == decodedUrl)
     }
 
 //    test("ButtonClick") {

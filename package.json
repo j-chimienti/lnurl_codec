@@ -1,0 +1,26 @@
+{
+  "name": "lnurl_codec",
+  "version": "1.0.0",
+  "description": "decode & encode lnurls",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scala-js/scalajs-tutorial.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/scala-js/scalajs-tutorial/issues"
+  },
+  "homepage": "https://github.com/scala-js/scalajs-tutorial#readme",
+  "dependencies": {
+    "jsdom": "^20.0.2"
+  }
+}

@@ -23,7 +23,6 @@ object LightningURLApp {
     val decoded = textarea(*.id := "decoded", *.rows:="5", *.cls:="form-control", *.readonly).render
     def decodeInput() = {
       val v = reasonInput.render.value
-      println(s"decode ${v}")
       val trimmed = v.replace("lightning:", "").trim
       val r = LightningUrl.decode(trimmed)
       decoded.render.textContent = r match {
@@ -31,7 +30,9 @@ object LightningURLApp {
         case Success(value) =>value
       }
     }
-    val decodeBtn = button(*.cls:="btn btn-primary", *.onclick:= {
+    val decodeBtn = button(*.cls:="btn btn-primary",
+      *.id := "decodeBtn",
+      *.onclick:= {
       () => decodeInput()
     })("decode")
 
